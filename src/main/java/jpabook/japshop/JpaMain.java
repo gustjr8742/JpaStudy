@@ -1,5 +1,6 @@
 package jpabook.japshop;
 
+import jpabook.japshop.domain.Book;
 import jpabook.japshop.domain.Order;
 import jpabook.japshop.domain.OrderItem;
 
@@ -14,6 +15,7 @@ public class JpaMain {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
         EntityManager em = emf.createEntityManager();
+
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
@@ -31,6 +33,11 @@ public class JpaMain {
 //
 //            em.persist(orderItem);
 
+            //상속 예제
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영한");
+            em.persist(book);
 
             tx.commit();
         } catch (Exception e) {
@@ -39,7 +46,6 @@ public class JpaMain {
         } finally {
             em.close();
         }
-
         emf.close();
 
     }
