@@ -3,6 +3,8 @@ package jpabook.japshop.domain;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 public class OrderItem extends BaseEntity {
 
@@ -13,14 +15,14 @@ public class OrderItem extends BaseEntity {
 //    @Column(name = "ORDER_ID")
 //    private Long orderId;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "ORDER_ID") //매핑관계
     private Order order;
 
 
 //    @Column(name = "ITEM_ID")
 //    private Long itemID;
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "ITEM_ID") //매핑관계
     private Item item;
 
